@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" href="https://i.ibb.co/9k13c66v/logo.png" type="image/png">
+    <title>Aflive academy - Área de membros</title>
+    <link rel="stylesheet" href="src/style.css">
+    <link rel="manifest" href="../manifest.json">
+</head>
+<body>
+    <iframe src="" id="meuIframe" frameborder="0"></iframe>
+    <!-- DESENVOLVIDA POR AFLIVE CREATOR, PARA MAIS INFO LIGA PARA: +258 863445385 E-MAIL ABDULFAQUIR@HOTMAIL.COM -->
+    <script>
+        window.onload = function () {
+            const params = new URLSearchParams(window.location.search);
+            const id = params.get('id');
+
+            if(id){
+                const urlFinal = `https://script.google.com/macros/s/AKfycbxxcP3QCZOLvEh7sUuAcJI7LLpUNCdnbpoDjpDZVoyddK-7AtkAM6b7Ut1orBYAU-yWyg/exechttps://script.google.com/macros/s/AKfycbxxcP3QCZOLvEh7sUuAcJI7LLpUNCdnbpoDjpDZVoyddK-7AtkAM6b7Ut1orBYAU-yWyg/exec?id=${id}`;
+
+                const iframe = document.getElementById('meuIframe');
+
+                iframe.src = urlFinal
+            } else{
+                alert('Verifica se o link esta coreto ou é de um administrador verificado')
+            }
+        }
+
+
+        if ("serviceWorker" in navigator) {
+  navigator.serviceWorker.register("/sw.js")
+    .then(() => console.log("Service Worker registrado!"))
+    .catch(err => console.log("Erro ao registrar SW:", err));
+}
+    </script>
+</body>
+</html>
