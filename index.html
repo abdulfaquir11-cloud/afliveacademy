@@ -9,16 +9,41 @@
     <link rel="manifest" href="/manifest.json">
 </head>
 <body>
+
     <!-- DESENVOLVIDA POR AFLIVE CREATOR, PARA MAIS INFO LIGA PARA: +258 863445385 -->
-    <iframe src="https://script.google.com/macros/s/AKfycbxxcP3QCZOLvEh7sUuAcJI7LLpUNCdnbpoDjpDZVoyddK-7AtkAM6b7Ut1orBYAU-yWyg/exec" frameborder="0"></iframe>
+
+    <iframe id="meuIframe" src="" frameborder="0"></iframe>
+
     <!-- DESENVOLVIDA POR AFLIVE CREATOR, PARA MAIS INFO LIGA PARA: +258 863445385 -->
-     <script>
-if ("serviceWorker" in navigator) {
-  navigator.serviceWorker.register("/sw.js")
-    .then(() => console.log("Service Worker registrado!"))
-    .catch(err => console.log("Erro ao registrar SW:", err));
-}
-</script>
+
+    <script>
+        window.onload = function () {
+
+            // 1. Ler o parâmetro id da URL
+            const params = new URLSearchParams(window.location.search);
+            const id = params.get("id");
+
+            // 2. Definir a URL base do WebApp
+            const webAppBase = "https://script.google.com/macros/s/AKfycbxxcP3QCZOLvEh7sUuAcJI7LLpUNCdnbpoDjpDZVoyddK-7AtkAM6b7Ut1orBYAU-yWyg/exec";
+
+            let finalURL = webAppBase;
+
+            // 3. Se houver id, adiciona "?id=VALOR"
+            if (id) {
+                finalURL = `${webAppBase}?id=${encodeURIComponent(id)}`;
+            }
+
+            // 4. Atribuir ao iframe
+            document.getElementById("meuIframe").src = finalURL;
+        };
+
+        // Registrar o Service Worker
+        if ("serviceWorker" in navigator) {
+            navigator.serviceWorker.register("/sw.js")
+                .then(() => console.log("Service Worker registrado!"))
+                .catch(err => console.log("Erro ao registrar SW:", err));
+        }
+    </script>
 
 </body>
 </html>
